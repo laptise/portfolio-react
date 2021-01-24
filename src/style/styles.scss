@@ -1,0 +1,195 @@
+body {
+  margin: 0;
+  font-family: dnp-shuei-gothic-kin-std, sans-serif;
+  font-weight: 500;
+
+  font-style: normal;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+@import "./animations";
+#black-out {
+  position: fixed;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadein 0.3s;
+  width: 100%;
+  z-index: 1;
+}
+
+#blocker {
+  background: rgb(121, 181, 255);
+  background: linear-gradient(24deg, rgba(121, 181, 255, 1) 0%, rgba(156, 212, 255, 1) 100%);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  div.intro-badge {
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    border-radius: 100px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  }
+  &.fade-out {
+    animation: fadeout 1s;
+  }
+  h1 {
+    font-size: 1.75em;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+  }
+  .container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 30px 20px;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-bottom: 15px;
+    .input-form {
+      width: 100%;
+      input {
+        width: calc(100% - 25px);
+        margin: 5px 0;
+        border: none;
+        background-color: rgba(0, 0, 0, 0) !important;
+        border-bottom: 1.5px solid black;
+        padding-bottom: 7px;
+        align-self: flex-start;
+        &:focus {
+          outline: none;
+        }
+        &::placeholder {
+          font-size: 12px;
+          color: black;
+          animation: fadein 0.5s;
+        }
+
+        &:placeholder-shown + span.title {
+          display: none;
+        }
+      }
+    }
+    .fa-icon {
+      display: inline-flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 20px;
+      opacity: 1;
+      transition: all 100ms;
+      color: black;
+      display: none;
+      cursor: pointer;
+      &.exist {
+        display: inline;
+        animation: fadeup 300ms;
+      }
+      &:hover {
+        color: rgb(255, 145, 0);
+        transform: translateY(-2px);
+        filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+      }
+      &:active {
+        transform: translateY(0);
+        opacity: 0.2;
+      }
+    }
+    span.title {
+      position: absolute;
+      top: 10px;
+      font-size: 13px;
+      left: 20px;
+      font-weight: bold;
+      animation: fadein 0.5s;
+    }
+    span.decsription {
+      font-size: 10px;
+    }
+  }
+}
+.App {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  position: fixed;
+
+  header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    align-self: flex-start;
+    width: 100%;
+    height: 32px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    nav {
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+      padding: 0 10px;
+    }
+  }
+
+  #app-body {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    @import "./single-pages";
+  }
+}
+
+#badge-menu {
+  animation: fadein 0.3s ease-out;
+  width: 400px;
+  position: fixed;
+  margin: 80px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+  overflow: hidden;
+
+  &.fadeout {
+    animation: fadeout 0.3s !important;
+  }
+  .single-badge {
+    background-color: white;
+    height: 150px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    transition: all 100ms;
+    user-select: none;
+    cursor: pointer;
+    &:hover {
+      background-color: rgb(202, 202, 202);
+    }
+    &:active {
+      transform: translateY(2px);
+    }
+    img {
+      width: 40px;
+      align-self: center;
+      height: 40px;
+    }
+  }
+}
