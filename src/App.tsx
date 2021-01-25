@@ -6,6 +6,7 @@ import Index from "./pages";
 import Biography from "./pages/biography";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Contact from "./pages/contact";
+import Portfolio from "./pages/portfolio";
 
 interface Props {
   authenticated?: Auth;
@@ -102,10 +103,10 @@ function BadgeMenu({ menuViewState, viewState }: MenuProps) {
         <div id="badge-menu">
           <div style={{ display: "flex" }}>
             <SingleBadge onClick={() => changeMenu(1)}>
-              <h3>dadad</h3>
+              <h3>Biography</h3>
             </SingleBadge>
-            <SingleBadge>
-              <h3>dadad</h3>
+            <SingleBadge onClick={() => changeMenu(3)}>
+              <h3>Portfolio</h3>
             </SingleBadge>
             <SingleBadge>
               <h3>dadad</h3>
@@ -116,7 +117,7 @@ function BadgeMenu({ menuViewState, viewState }: MenuProps) {
               <h3>dadad</h3>
             </SingleBadge>
             <SingleBadge onClick={() => changeMenu(0)}>
-              <h3>dadad</h3>
+              <h3>HOME</h3>
             </SingleBadge>
             <SingleBadge>
               <h3>dadad</h3>
@@ -130,7 +131,7 @@ function BadgeMenu({ menuViewState, viewState }: MenuProps) {
               <h3>dadad</h3>
             </SingleBadge>
             <SingleBadge onClick={() => changeMenu(2)}>
-              <h3>dadad</h3>
+              <h3>CONTACT</h3>
             </SingleBadge>
           </div>
         </div>
@@ -172,6 +173,7 @@ const views = [
   new View(Index, "/"),
   new View(Biography, "biography"),
   new View(Contact, "contact"),
+  new View(Portfolio, "portfolio"),
 ];
 
 class Auth {
